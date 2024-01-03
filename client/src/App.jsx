@@ -21,7 +21,7 @@ function App() {
 
   const fetchWeatherData = async (cities) => {
     try {
-      const response = await fetch("http://localhost:5000/getWeather", {
+      const response = await fetch("https://weather-assignment-server.vercel.app/getWeather", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
