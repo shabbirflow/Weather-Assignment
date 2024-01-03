@@ -23,6 +23,7 @@ app.post("/getWeather", async (req, res) => {
     console.log("HEYYY");
     console.log(cities);
     const weatherData = {};
+    console.log("reached");
 
     // Fetch weather data for each city
     for (const city of cities) {
