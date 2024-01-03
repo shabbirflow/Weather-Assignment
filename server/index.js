@@ -19,6 +19,7 @@ app.get("/", (req, res) => {
 app.post("/getWeather", async (req, res) => {
   try {
     const { cities } = req.body;
+    if (!cities) throw new Error("Please provide cities");
     console.log("HEYYY");
     console.log(cities);
     const weatherData = {};
