@@ -6,7 +6,7 @@ const app = express();
 const PORT = 5000;
 const WEATHER_API_ENDPOINT = "https://open-weather13.p.rapidapi.com";
 app.use(bodyParser.json());
-app.use(cors());
+// app.use(cors());
 
 function convert(f) {
   return (((f - 32) * 5) / 9).toFixed(2);
