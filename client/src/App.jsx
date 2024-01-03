@@ -7,13 +7,14 @@ function App() {
 
   const handleButtonClick = async (e) => {
     e.preventDefault();
+    setShowRes(1);
 
     try {
       const cities = inputValue.split(",");
-      console.log(cities);
+      setShowRes(1)
       const response = await fetchWeatherData(cities);
-      setRes(response);
-      setShowRes(true);
+      setRes(JSON.stringify(response));
+      setShowRes(2);
     } catch (error) {
       console.error("Error fetching weather data:", error);
     }
@@ -22,7 +23,7 @@ function App() {
   const fetchWeatherData = async (cities) => {
     try {
       const cities = inputValue.split(",");
-      console.log(cities);
+      // console.log(cities);
 
       // Make a POST request to the server with the list of cities
       const response = await fetch(
@@ -42,8 +43,7 @@ function App() {
       }
 
       const data = await response.json();
-      setRes(data);
-      setShowRes(true);
+      return data;
     } catch (error) {
       throw new Error(error.message);
     }
@@ -64,7 +64,9 @@ function App() {
           </button>
         </form>
       </div>
-      {showRes && <div>{JSON.stringify(res)}</div>}
+      {showRes === 1 && <p>Loading...</p>}
+      {showRes === 2 && <p>{res}</p>}
+      {!showRes && <p>none</p>}
     </div>
   );
 }

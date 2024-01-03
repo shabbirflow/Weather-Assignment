@@ -39,15 +39,15 @@ app.post("/getWeather", async (req, res) => {
       const formattedCity = city.trim().toLowerCase().replace(" ", "+");
       const apiRes = await axios.request({
         method: "GET",
-        url: `https://open-weather13.p.rapidapi.com/city/${formattedCity}`,
+        url: 'https://weather-by-api-ninjas.p.rapidapi.com/v1/weather',
+        params: {city: formattedCity},
         headers: {
-          "X-RapidAPI-Key":
-            "2d067bedbbmsh9dfcb9607842411p164b03jsn566de3609656",
-          "X-RapidAPI-Host": "open-weather13.p.rapidapi.com",
-        },
+          'X-RapidAPI-Key': '2d067bedbbmsh9dfcb9607842411p164b03jsn566de3609656',
+          'X-RapidAPI-Host': 'weather-by-api-ninjas.p.rapidapi.com'
+        }
       });
       //   console.log(apiRes.data);
-      const temp = convert(apiRes.data.main.temp);
+      const temp = convert(apiRes.temp);
       console.log("Temperature in Celsius:", temp, formattedCity);
       weatherData[city] = `${temp} °C`;
     }
