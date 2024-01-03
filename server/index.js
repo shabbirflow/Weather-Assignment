@@ -47,7 +47,8 @@ app.post("/getWeather", async (req, res) => {
         }
       });
         console.log(apiRes, formattedCity);
-      const temp = convert(apiRes.temp);
+      const apiResData = await apiRes.json();
+      const temp = convert(apiResData.temp);
       console.log("Temperature in Celsius:", temp, formattedCity);
       weatherData[city] = `${temp} °C`;
     }
