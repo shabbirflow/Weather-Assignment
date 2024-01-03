@@ -28,11 +28,11 @@ app.post("/getWeather", async (req, res) => {
   )
   try {
     const { cities } = req.body;
-    console.log("HEYYY");
+    // console.log("HEYYY");
     if (!cities) throw new Error("Please provide cities");
     console.log(cities);
     const weatherData = {};
-    console.log("reached");
+    // console.log("reached");
 
     // Fetch weather data for each city
     for (const city of cities) {
@@ -46,7 +46,7 @@ app.post("/getWeather", async (req, res) => {
           'X-RapidAPI-Host': 'weather-by-api-ninjas.p.rapidapi.com'
         }
       });
-      //   console.log(apiRes.data);
+        console.log(apiRes, formattedCity);
       const temp = convert(apiRes.temp);
       console.log("Temperature in Celsius:", temp, formattedCity);
       weatherData[city] = `${temp} °C`;
