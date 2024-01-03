@@ -21,13 +21,16 @@ function App() {
 
   const fetchWeatherData = async (cities) => {
     try {
-      const response = await fetch("https://weather-assignment-server.vercel.app/getWeather", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ cities }),
-      });
+      const response = await fetch(
+        "https://weather-assignment-server.vercel.app/getWeather",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ cities }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to fetch weather data");
