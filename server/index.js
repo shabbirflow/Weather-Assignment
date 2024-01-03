@@ -12,6 +12,10 @@ function convert(f) {
   return (((f - 32) * 5) / 9).toFixed(2);
 }
 
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
 app.post("/getWeather", async (req, res) => {
   try {
     const { cities } = req.body;
