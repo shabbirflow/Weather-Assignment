@@ -21,6 +21,10 @@ function App() {
 
   const fetchWeatherData = async (cities) => {
     try {
+      const cities = inputValue.split(",");
+      console.log(cities);
+
+      // Make a POST request to the server with the list of cities
       const response = await fetch(
         "https://weather-assignment-server.vercel.app/getWeather",
         {
@@ -28,7 +32,8 @@ function App() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ cities }),
+          mode: 'no-cors',
+          body: JSON.stringify({ "cities": cities }),
         }
       );
 
@@ -37,7 +42,8 @@ function App() {
       }
 
       const data = await response.json();
-      return data;
+      setRes(data);
+      setShowRes(true);
     } catch (error) {
       throw new Error(error.message);
     }

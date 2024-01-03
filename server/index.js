@@ -19,8 +19,8 @@ app.get("/", (req, res) => {
 app.post("/getWeather", async (req, res) => {
   try {
     const { cities } = req.body;
-    if (!cities) throw new Error("Please provide cities");
     console.log("HEYYY");
+    if (!cities) throw new Error("Please provide cities");
     console.log(cities);
     const weatherData = {};
     console.log("reached");
@@ -42,7 +42,6 @@ app.post("/getWeather", async (req, res) => {
       console.log("Temperature in Celsius:", temp, formattedCity);
       weatherData[city] = `${temp} °C`;
     }
-
     // res.json({ weather: weatherData });
     return res.status(200).json(weatherData);
   } catch (error) {
